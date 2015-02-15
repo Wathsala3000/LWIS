@@ -1,0 +1,56 @@
+<template name="rec">
+	<div class="container">
+		<div class="col-md-12">
+			<h4>This Month {{calcrec}} rupees Recivable from {{calconlect}} lecturers</h4>
+			<a herf="" name="" id="craterect" class="btn btn-primary craterect in-active" >Add Month Recived</a>
+			
+			
+			<div class="form-group pull-right">
+	            <input type="text" class="form-control rec" value="" id="camount"/>
+	        </div>
+	        <a herf="" name="" id="addSpecTransac" class="btn btn-warning pull-right in-active" >Add Special Recived</a>	
+	         
+
+			
+				
+		
+		</div>
+		<div class="col-md-12">
+        		<table class="table table-striped">
+        		    <thead>
+        		        <tr>
+        		            <th>Lecturer Name</th>	      
+        		            <th>Faculty</th>
+        		            <th>Contact Number - Mobile</th>
+        		            <th>Recived</th>   
+        		        </tr>
+        		    </thead>
+        		    <tbody>
+        		    	{{>recivedinfo}}
+                        
+        		    </tbody>
+        		</table>        
+        </div>
+
+
+	</div> 	
+</template>
+<template name="recivedinfo">
+			{{#each getrecinfo}}
+						<tr class='lectrow'>
+        		       		
+	        		            <td>{{getrecmeminfo.lectname}}</td>
+	        		        	<td>{{getrecmeminfo.faculty}}</td>
+	        		            <td>{{getrecmeminfo.contactmobile}}</td>
+	        		            <td>{{amount}}</td>
+                             <td> <a herf="" name="delete" id="view" class="btn btn-danger pull-right view">Delete</a></td>
+        		        </tr> 
+        	{{/each}}  
+
+        	{{#each getsession}}
+					<h3>  {{amount}} Rupees Recived For {{sessionname}} Month.</h3>
+					<h3></h3>
+			{{/each}}   
+
+        
+</template>

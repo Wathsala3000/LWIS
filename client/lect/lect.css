@@ -1,0 +1,60 @@
+.addevent{
+	margin-top: 50px;
+	margin-left: 400px;
+	width:350px;
+	height:500px;
+	background-color: white;
+}
+
+.lectinfoview{
+	margin-top: 50px;
+	margin-left: 400px;
+	width:450px;
+	height:500px;
+	background-color: white;
+}
+#lectname{
+	height: 30px;
+}
+#lecttitle{
+	height: 30px;
+}
+#dept{
+	height: 30px;
+}
+#datetimepicker1{
+	height: 30px;
+}
+#address{
+	height: 30px;
+}
+#contactmobile{
+	height: 30px;
+}
+#contacthome{
+	height: 30px;
+}
+#contactoffice{
+	height: 30px;
+}
+#contactofficeext{
+	height: 30px;
+}
+#email{
+	height: 30px;
+}
+#status{
+	height: 30px;
+}
+#benifitname{
+	height: 30px;
+}
+#benefitaddress{
+	height: 30px;
+}
+
+.cursorHand{
+
+	cursor: pointer;
+	cursor: hand; 
+}

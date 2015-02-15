@@ -1,0 +1,258 @@
+<template name="lect">
+
+
+{{#if lectinfoview}}
+    {{>lectInfoview}}
+{{else}}
+    {{#if showlectform}}
+        {{>lectForm}}
+    {{/if}}
+{{/if}}
+    <div class="container">
+          <div class="col-md-12">
+            <div class="form-group pull-right">
+                <a herf="" name="" id="addlectbtn" class="btn btn-primary addlectbtn">Add Lecturer</a>
+            </div>
+             <div class="form-group ">
+                    {{>searchBox}}
+            </div>
+        </div>
+        <div class="col-md-12">
+        		<table class="table table-striped">
+        		    <thead>
+        		        <tr>
+        		            <th>Title</th>
+        		            <th>Lecturer Name</th>	      
+        		            <th>Department</th>
+        		            <th>Faculty</th>
+        		            <th>Contact Number - Mobile</th>
+        		            <th>Contact Number - Office Extention</th>
+        		            <th>E-mail</th>
+        		            <th>Status</th>
+        		            <th>Benefiter's Name</th>
+        		           
+        		        </tr>
+        		    </thead>
+        		    <tbody>
+                        {{#each lectinfo}}
+        		        <tr class='lectrow'>
+        		            <td>{{lecttitle}}</td>
+        		            <td>{{lectname}}</td>
+        		        	<td>{{departement}}</td>
+        		            <td>{{faculty}}</td>
+        		            <td>{{contactmobile}}</td>
+                            <td>{{contactofficeext}}</td>
+                            <td>{{email}}</td>
+                            <td>{{status}}</td>
+                            <td>{{benifitername}}</td>
+                             <td> <a herf="" name="save" id="view" class="btn btn-primary pull-right view">View</a></td>
+        		        </tr>      
+                        {{/each}}
+        		    </tbody>
+        		</table>        
+        </div>
+    </div>
+
+</template>
+
+
+<template name="lectForm">
+  <div id="" name="" class="modal-backdrop">
+    <div class="addevent">
+      <div class="modal-header">
+        <a id="close" class="cursorHand pull-right" data-dismiss="modal">X</a>
+        {{#if updatelect}}
+        <h4>Update Lecturer Information</h4> 
+        {{else}}
+        <h4>Add Lecturer Information </h4> 
+        {{/if}}       
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label for="name">Lecturer Name in Full</label>
+            <input type="text" class="form-control txtheight" value="" id="lectname"/>
+        </div>
+        <div class="form-group">
+            <label for="name">Title</label>
+            <input type="text" class="form-control" value="" id="lecttitle"/>
+        </div>
+         <div class="form-group">
+            <label for="name">Department</label>
+            <input type="text" class="form-control"  value="" id="dept" >
+        </div>
+        <div class="form-group">
+        <label for="name">Faculty</label>
+        <select name="adminroles"  class="form-control adminroles" id="faculty" required="required">
+                <option value=""></option>             
+                <option value="FAS">FAS</option>
+                <option value="FHS">FHS</option>
+                <option value="FMS">FMS</option>
+                <option value="FMSC">FMSC</option>
+                <option value="FPS">FPS</option>
+        </select>
+        </div>
+
+        <div class="form-group">
+        <label for="name">Date of Birth </label>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control dob" name="datentime" id ="datetimepicker1" value="" required/>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                    $(function () {
+                    $('#datetimepicker1').datetimepicker();
+                                });
+            </script>
+        </div>
+
+         <div class="form-group">
+            <label for="name">Address</label>
+            <input type="text" class="form-control eventcor" name="eventcor" value="" id="address" >
+        </div>
+        <div class="form-group">
+            <label for="name">Contact - Mobile</label>
+            <input type="text" class="form-control eventcor" name="eventcor" value="" id="contactmobile" >
+        </div>
+        <div class="form-group">
+            <label for="name">Contact - Home</label>
+            <input type="text" class="form-control eventcor" name="eventcor" value="" id="contacthome" >
+        </div>
+         <div class="form-group">
+            <label for="name">Contact - Office</label>
+            <input type="text" class="form-control eventcor" name="eventcor" value="" id="contactoffice" >
+        </div>
+        <div class="form-group">
+            <label for="name">Contact - Office Extention</label>
+            <input type="text" class="form-control eventcor" name="eventcor" value="" id="contactofficeext" >
+        </div>
+         
+         <div class="form-group">
+            <label for="name">E-mail</label>
+            <input type="email" class="form-control eventcor" name="eventcor" value="" id="email" >
+        </div>
+        <div class="form-group">
+        <label for="name">Status</label>
+        <select name="adminroles"  class="form-control adminroles" id="status" required="required">
+                <option value="On">On</option>             
+                <option value="Off">Off</option>
+        </select>
+        </div>
+
+
+        <div class="form-group">
+            <label for="name">Benifiter's Name</label>
+            <input type="text" class="form-control eventcor" name="eventcor" value="" id="benifitname" >
+        </div>
+        <div class="form-group">
+            <label for="name">Benifiter's Address</label>
+            <input type="text" class="form-control eventcor" name="eventcor" value="" id="benefitaddress" >
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        {{#if updatelect}}
+         <a herf="" name="save" id="delete" class="btn btn-danger pull-left delete">Delete</a>
+            <a herf="" name="save" id="update" class="btn btn-warning update">Update</a>
+        {{else}}
+          <a herf="" name="save" id="save" class="btn btn-success save">Save</a>
+        {{/if}}  
+          <a herf="" name="cancel" id="cancel" class="btn cancel" data-dismiss="modal">Cancel</a>     
+      </div>
+  </div>
+  </div>
+</template>
+
+
+<template name="lectInfoview">
+  <div id="" name="" class="modal-backdrop">
+    <div class="lectinfoview">
+      <div class="modal-header">
+        <a id="close" class="cursorHand pull-right" data-dismiss="modal">X</a>
+        
+        <h4>Lecturer Information </h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label class="pull-right" for="name">Balance : <b>{{lectbalance}}</b></label>
+            <label for="name">Lecturer Name in Full  </label> 
+            <label><b>{{lectinfo.lectname}}</b></label>
+            <label for="name">Title</label>
+            <label> <b>{{lectinfo.lecttitle}}</b></label>
+            <label for="name">Department</label>
+            <label> <b>{{lectinfo.departement}}</b></label>
+            <label for="name">Faculty: </label>   
+            <label> <b>{{lectinfo.faculty}}</b></label>
+            <label for="name">Date of Birth :  </label>
+            <label><b>{{lectinfo.dob}}</b> </label> 
+            <label for="name">Address :  </label>
+            <label><b>{{lectinfo.address}}</b></label>
+            <label for="name">Contact - Mobile : </label>
+            <label> <b>{{lectinfo.contactmobile}}</b> </label>
+            <label for=" name">Contact - Home :   </label>
+            <label><b>{{lectinfo.contacthome}}</b></label>
+            <label for="name">Contact - Office :   </label>
+            <label><b>{{lectinfo.contactoffice}}</b></label>
+            <label for="name">Contact - Office Extention : </label>
+            <label> <b>{{lectinfo.contactofficeext}}</b> </label> 
+            <label for="name">E-mail :  </label>
+            <label> <b>{{lectinfo.email}}</b></label>
+            <label for="name">Status :</label>
+            <label> <b>{{lectinfo.status}}</b> </label>
+            <label for="name">Benifiter's Name :  </label>     
+            <label><b>{{lectinfo.benifitername}}</b> </label>
+            <label for="name">Benifiter's Address :   </label>
+            <label><b>{{lectinfo.benefitaddress}}</b></label>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+            
+      </div>
+  </div>
+  </div>
+</template>
+
+<template name="searchBox">
+    {{> esInput index="lecturer" placeholder="Search..." }}
+                <table class="table table-striped">
+                    
+                    <tbody>
+                        {{#esEach index="lecturer"}}
+                            <tr class='lectrow'>
+                                <td>{{lecttitle}}</td>
+                                <td>{{lectname}}</td>
+                                <td>{{departement}}</td>
+                                <td>{{faculty}}</td>
+                                <td>{{contactmobile}}</td>
+                                <td>{{contactofficeext}}</td>
+                                <td>{{email}}</td>
+                                <td>{{status}}</td>
+                                <td>{{benifitername}}</td>
+                                 <td> <a herf="" name="save" id="view" class="btn btn-primary pull-right view">View</a></td>
+                            </tr>      
+                        {{/esEach}}
+                    </tbody>
+                </table>        
+
+       
+    
+</template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
